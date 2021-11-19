@@ -11,6 +11,7 @@ import Layout from './components/Layout';
 import Class from './pages/Class';
 import Test from './pages/Test';
 import themeState from './recoil/theme';
+import { Styled } from './utils/style';
 
 
 const App: React.FC = () => {
@@ -18,7 +19,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Global />
+      <Global className={`theme-${theme}`} />
       <Layout className={`theme-${theme}`}>
         <Route exact path="/tests/" render={() => <Test name="" />} />
         <Route
