@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
     - main
+  pull_request_target:
 
 jobs:
   docker:
@@ -32,6 +33,8 @@ jobs:
           yarn workspace @team-10/frontend run eslint --fix $F_DIFF
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply ESLint change
 
       - name: Build containers
         run: docker build -t keonwoo/cs492c:test -f Dockerfile .
