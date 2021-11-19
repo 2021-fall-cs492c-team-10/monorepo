@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 
 import Global from './components/Global';
 import Layout from './components/Layout';
-import Class from './pages/Class';
+import Classroom from './pages/Classroom';
 import Test from './pages/Test';
 import themeState from './recoil/theme';
 import { Styled } from './utils/style';
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             <Test name={match.params.name} />
           )}
         />
-        <Route path="/classes/:id" render={() => <Class />} />
+        <Route path="/classes/:id" render={() => <Classroom />} />
       </Layout>
     </Router>
   );
