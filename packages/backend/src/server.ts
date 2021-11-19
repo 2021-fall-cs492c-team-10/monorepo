@@ -21,7 +21,7 @@ import frontendRouter from './routes/frontend';
 import Room from './types/room';
 import { generateClassroomHash } from './utils/classroom';
 
-const DROP_SCHEMA =     false;
+const DROP_SCHEMA =    false;
 
 /** Class representing a server stack. */
 export default class Server {
