@@ -6,10 +6,6 @@ on:
     - main
     - features/**
     - dependabot/**
-  pull_request:
-    branches:
-    - main
-  pull_request_target:
 
 jobs:
   docker:
