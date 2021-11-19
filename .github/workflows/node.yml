@@ -1,11 +1,6 @@
 name: test@node-14.18.1
 
-on:
-  push:
-    branches:
-    - main
-    - features/**
-    - dependabot/**
+on: [push, pull_request, pull_request_target]
 
 jobs:
   docker:
