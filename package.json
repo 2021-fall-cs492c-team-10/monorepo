@@ -19,6 +19,7 @@
     "development:frontend": "PORT=3567 REACT_APP_PROXY_URL=\"http://[::1]:3566\" yarn workspace @team-10/frontend run dev",
     "build:development": "docker-compose --profile development build",
     "production": "docker-compose --env-file .env.production --profile production up",
+    "build": "yarn workspace @team-10/frontend run production && mv packages/frontend/build packages/backend/public",
     "build:production": "yarn workspace @team-10/frontend run production && mv packages/frontend/build packages/backend/public || move packages/frontend/build packages/backend/public && docker-compose --env-file .env.production --profile production build",
     "test": "yarn workspaces foreach run test",
     "dev": "yarn development",
