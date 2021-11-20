@@ -17,7 +17,7 @@ function generateClassroomHash(): string {
   return `${generateSyllable()}-${generateSyllable()}-${generateSyllable()}`;
 }
 
-const classrooms: Classroom[] = [
+const initialClassrooms: Classroom[] = [
   {
     name: '전산학특강<FE개발>',
     isLive: true,
@@ -48,10 +48,12 @@ const classrooms: Classroom[] = [
   },
 ];
 
-const Main: React.FC = () => (
-  <ContentPadding isFooterPresent>
-    <ClassList classrooms={classrooms} />
-  </ContentPadding>
-);
-
+const Main: React.FC = () => {
+  const [classrooms, setClassroom] = React.useState(initialClassrooms);
+  return (
+    <ContentPadding isFooterPresent>
+      <ClassList classrooms={classrooms} setClassroom={setClassroom} />
+    </ContentPadding>
+  );
+};
 export default Main;

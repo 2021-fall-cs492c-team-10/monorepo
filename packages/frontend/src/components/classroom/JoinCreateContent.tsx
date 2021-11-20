@@ -8,7 +8,12 @@ import AmbientButton from '../buttons/AmbientButton';
 import Button from '../buttons/Button';
 import TextInput from '../input/TextInput';
 
-const JoinCreateContent: React.FC = () => {
+interface Props {
+  handleCreate: (courseName: string) => void;
+  onClose: () => void;
+}
+
+const JoinCreateContent: React.FC<Props> = ({ handleCreate, onClose }) => {
   const passwordJoinRef = React.useRef<HTMLInputElement>(null);
   const joinButtonRef = React.useRef<HTMLButtonElement>(null);
   const createButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -71,6 +76,10 @@ const JoinCreateContent: React.FC = () => {
             text="Create"
             width="full"
             disabled={!classNameCreate}
+            onClick={() => {
+              handleCreate(classNameCreate);
+              onClose();
+            }}
           />
         </div>
       </section>

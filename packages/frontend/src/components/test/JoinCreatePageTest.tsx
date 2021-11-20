@@ -49,10 +49,10 @@ const initialClassrooms: Classroom[] = [
 ];
 
 const JoinCreatePageTest: React.FC = () => {
-  const [classrooms] = React.useState(initialClassrooms);
+  const [classrooms, setClassroom] = React.useState(initialClassrooms);
   return (
     <div className="w-full h-full justify-center items-center">
-      <ClassList classrooms={classrooms} />
+      <ClassList classrooms={classrooms} setClassroom={setClassroom} />
     </div>
   );
 };

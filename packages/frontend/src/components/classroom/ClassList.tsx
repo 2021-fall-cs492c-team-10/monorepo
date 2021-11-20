@@ -1,5 +1,6 @@
 import React from 'react';
 
+import generateClassroomHash from '../../functions/generateClassroomHash';
 import { Classroom } from '../../types/classroom';
 
 import ClassAddButton from './ClassAddButton';
@@ -8,21 +9,37 @@ import styles from './ClassList.module.css';
 
 interface Props {
   classrooms: Classroom[];
+  setClassroom: React.Dispatch<React.SetStateAction<Classroom[]>>;
 }
 
-const ClassList: React.FC<Props> = ({ classrooms }) => (
-  <ul className={styles.container}>
-    {classrooms.map((classroom) => (
-      <li key={classroom.hash}>
-        <ClassButton
-          classroom={classroom}
-        />
+type HandleCreate = (courseName: string) => void;
+
+const ClassList: React.FC<Props> = ({ classrooms, setClassroom }) => {
+  const handleCreate: HandleCreate = (name: string) => {
+    const newClass = {
+      hash: generateClassroomHash(),
+      name,
+      videoId: null,
+      isLive: false,
+      isMine: true,
+    };
+    setClassroom([...classrooms, newClass]);
+  };
+
+  return (
+    <ul className={styles.container}>
+      {classrooms.map((classroom) => (
+        <li key={classroom.hash}>
+          <ClassButton
+            classroom={classroom}
+          />
+        </li>
+      ))}
+      <li>
+        <ClassAddButton handleCreate={handleCreate} />
       </li>
-    ))}
-    <li>
-      <ClassAddButton />
-    </li>
-  </ul>
-);
+    </ul>
+  );
+};
 
 export default ClassList;
