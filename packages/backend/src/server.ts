@@ -82,6 +82,9 @@ export default class Server {
       synchronize: true,
       dropSchema: DROP_SCHEMA,
       entities: ['src/entity/**/*.ts'],
+      ssl: {
+        rejectUnauthorized: false,
+      },
     });
     const sessionRepository = connection.getRepository(SessionEntity);
     const ssoAccountRepository = connection.getRepository(SSOAccountEntity);
