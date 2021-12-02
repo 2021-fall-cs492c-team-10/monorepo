@@ -3,6 +3,7 @@ import { UserSocket } from '../types/socket';
 
 import ioVoiceHandler from './voice';
 import ioYouTubeHandler from './YouTube';
+import ioChatHandler from './chat';
 
 const ioHandler = (server: Server) => {
   const { io, managers } = server;
@@ -24,6 +25,7 @@ const ioHandler = (server: Server) => {
   });
   ioVoiceHandler(io, server);
   ioYouTubeHandler(io, server);
+  ioChatHandler(io, server);
 };
 
 export default ioHandler;
